@@ -11,18 +11,21 @@ import java.util.Vector;
  */
 public class DBConnect {
 	
+	//Bennenung der Variabeln nach deren Zweck
 	private String USER = "root";
-	private final String URL = "jdbc:mysql://localhost";
+	private final String DB_URL = "jdbc:mysql://localhost";
 	private String DB = "/dbconnect_test";
 	private String PWD = "1234";
 	
 	private String QUERY;
 	
+	
+	
 	private Vector<String> queryResult;
 	
 	private Vector<String> columnName;
 	
-	
+	//Singleton-Instanz
 	private static DBConnect instance = new DBConnect();
 	
 	protected Connection connection;
@@ -40,7 +43,7 @@ public class DBConnect {
 		this.columnName = new Vector<String>();
 		
 		try{
-			connection = DriverManager.getConnection(URL + DB, USER, PWD); //DB-Parameter
+			connection = DriverManager.getConnection(DB_URL + DB, USER, PWD); //DB-Parameter
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
